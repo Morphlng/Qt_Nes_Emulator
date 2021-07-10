@@ -1,0 +1,42 @@
+*=$8000
+LDX #10
+STX $0000
+LDX #3
+STX $0001
+LDY $0000
+LDA #0
+CLC
+loop
+ADC $0001
+DEY
+BNE loop
+STA $0002
+NOP
+NOP
+NOP
+
+pass 2
+
+     * = $8000
+8000        LDX #$0A        A2 0A
+8002        STX $0000       8E 00 00
+8005        LDX #$03        A2 03
+8007        STX $0001       8E 01 00
+800A        LDY $0000       AC 00 00
+800D        LDA #$00        A9 00
+800F        CLC             18
+8010 LOOP   
+8010        ADC $0001       6D 01 00
+8013        DEY             88
+8014        BNE LOOP        D0 FA
+8016        STA $0002       8D 02 00
+8019        NOP             EA
+801A        NOP             EA
+801B        NOP             EA
+done.
+
+
+A2 0A 8E 00 00 A2 03 8E
+01 00 AC 00 00 A9 00 18
+6D 01 00 88 D0 FA 8D 02
+00 EA EA EA

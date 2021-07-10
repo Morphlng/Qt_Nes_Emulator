@@ -1,0 +1,15 @@
+Super_mario_brothers——Mapper0
+Ballon Fight——Mapper0（No Scrolling in this game）
+Popeye——Mapper0（No Scrolling in this game）
+
+ZeldaUS——Mapper1
+
+Contras——Mapper2
+
+DonkeyKong——Mapper3（No Scrolling in this game）
+SolomonsKey——Mapper3
+ShadowLegend——Mapper3
+
+StarWras.nes——Mapper4
+
+DragonPower——Mapper66
