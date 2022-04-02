@@ -55,8 +55,6 @@ void MainWindow::WindowInit()
     scene_game = new QGraphicsScene;
     pixels = new QRgb[256 * 240];
     timer_game = NULL;
-    timer_game_2 = NULL;
-    timer_game_3 = NULL;
     file_path = "";
 }
 
@@ -92,38 +90,20 @@ void MainWindow::FCInit()
     timer_game = new QTimer(this);
     timer_game->setTimerType(Qt::PreciseTimer);
     connect(timer_game, &QTimer::timeout, this, &MainWindow::OnNewFrame);
-    timer_game->start(50);
-
-    QThread::msleep(16);
-    timer_game_2 = new QTimer(this);
-    timer_game_2->setTimerType(Qt::PreciseTimer);
-    connect(timer_game_2, &QTimer::timeout, this, &MainWindow::OnNewFrame);
-    timer_game_2->start(50);
-
-    QThread::msleep(17);
-    timer_game_3 = new QTimer(this);
-    timer_game_3->setTimerType(Qt::PreciseTimer);
-    connect(timer_game_3, &QTimer::timeout, this, &MainWindow::OnNewFrame);
-    timer_game_3->start(50);
+    timer_game->start(16);
 }
 
 void MainWindow::PauseGame()
 {
     if (timer_game) {
         timer_game->stop();
-        timer_game_2->stop();
-        timer_game_3->stop();
     }
 }
 
 void MainWindow::ResumeGame()
 {
     if (timer_game) {
-        timer_game->start(50);
-        QThread::msleep(16);
-        timer_game_2->start(50);
-        QThread::msleep(17);
-        timer_game_3->start(50);
+        timer_game->start(16);
     }
 }
 
@@ -134,14 +114,8 @@ void MainWindow::OnChooseFile()
         file_path = filename;
         if (timer_game) {
             timer_game->stop();
-            timer_game_2->stop();
-            timer_game_3->stop();
             delete timer_game;
-            timer_game = NULL;
-            delete timer_game_2;
-            timer_game_2 = NULL;
-            delete timer_game_3;
-            timer_game_3 = NULL;
+            timer_game = NULL;  
         }
         scene_game->clear();
 
@@ -163,14 +137,8 @@ void MainWindow::ReloadGame()
     if (file_path != "") {
         if (timer_game) {
             timer_game->stop();
-            timer_game_2->stop();
-            timer_game_3->stop();
             delete timer_game;
             timer_game = NULL;
-            delete timer_game_2;
-            timer_game_2 = NULL;
-            delete timer_game_3;
-            timer_game_3 = NULL;
         }
         scene_game->clear();
 

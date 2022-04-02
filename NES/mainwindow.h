@@ -44,8 +44,6 @@ private:
     QGraphicsScene *scene_game;
     QGraphicsPixmapItem *pixmap_lp;
     QTimer *timer_game;
-    QTimer *timer_game_2;
-    QTimer *timer_game_3;
     QRgb *pixels;
     QString file_path;
     int frame_interval;
